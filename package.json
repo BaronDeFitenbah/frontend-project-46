@@ -21,6 +21,7 @@
     "gendiff": "bin/gendiff.js"
   },
   "dependencies": {
-    "commander": "^10.0.1"
+    "commander": "^10.0.1",
+    "git": "^0.1.5"
   }
 }
