@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-
+import parser from '../src/index.js';
 import { Command } from 'commander';
+
 const program = new Command();
 
 program
@@ -10,5 +11,8 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .option('-f, --format <type>', 'output format', 'stylish')
+  .action((filepath1, filepath2) => {
+    console.log(parser(filepath1, filepath2));
+  });
 
 program.parse();
