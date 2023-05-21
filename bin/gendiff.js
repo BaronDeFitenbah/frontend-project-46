@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import parser from '../src/index.js';
 import { Command } from 'commander';
+import parser from '../src/index.js';
 
 const program = new Command();
 
