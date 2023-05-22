@@ -5,4 +5,4 @@
 
 <a href="https://codeclimate.com/github/BaronDeFitenbah/frontend-project-46/test_coverage"><img src="https://api.codeclimate.com/v1/badges/24eb91d97ccb5bb1e89b/test_coverage" /></a>
 
-Step 3: https://asciinema.org/a/586296
+Step 3: https://asciinema.org/a/586540

@@ -2,7 +2,7 @@ import path from 'path';
 import _ from 'lodash';
 import { readFileSync } from 'fs';
 
-const getPath = (filename) => path.resolve(process.cwd(), filename);
+const getPath = (filename) => path.resolve('__fixtures__', filename);
 const readFile = (filepath) => readFileSync(filepath, 'utf8');
 
 function markChangeWithNeutral(key, value) {
