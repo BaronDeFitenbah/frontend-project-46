@@ -14,8 +14,8 @@ test('json files', () => {
 });
 
 test('yaml files', () => {
-  const filename1 = getPath('file1.yaml');
-  const filename2 = getPath('file2.yaml');
+  const filename1 = getPath('file1.yml');
+  const filename2 = getPath('file2.yml');
   const resultname = getPath('result.txt');
   const result = readFileSync(resultname, 'utf8');
   expect(parser(filename1, filename2)).toBe(result);
