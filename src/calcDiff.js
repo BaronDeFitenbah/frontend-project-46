@@ -18,9 +18,10 @@ const calcDiff = (value1, value2, key, result = []) => { // функция по�
     // ключ отсутствует в 2 файле
     result.push(markChangeWithMinus(key, value1));
   } else if (typeof value1 === 'object') {
-    // объект. Рекурсия
-    // пока не работает
-    return calcDiff(key, result);
+    // объект. Рекурсия. пока не работает
+    if (typeof value2 === 'object') {
+      return calcDiff(key, result);
+    }
   } else if (value1 === value2) {
     // равны значения
     result.push(markChangeWithNeutral(key, value1));
