@@ -3,9 +3,18 @@ import _ from 'lodash';
 import { readFileSync } from 'fs';
 import calcDiff from './calcDiff.js';
 import parse from './parsers.js';
+import format from './formatters/stylish.js';
 
 const getPath = (filename) => path.resolve('__fixtures__', filename);
-const readFile = (filepath) => readFileSync(filepath, 'utf8');
+const readFile = (filepath) => {
+  try {
+    return readFileSync(filepath, 'utf8');
+  } catch (error) {
+    console.error(`Ошибка при чтении файла: ${error}`);
+    // Обработка ошибки, например, возврат значения по умолчанию или более детальная обработка
+    return null;
+  }
+  readFileSync(filepath, 'utf8')};
 
 const getFileFormat = (filename) => path.extname(filename).slice(1);
 
@@ -29,7 +38,7 @@ const parser = (filepath1, filepath2) => { // основная функция
     return result;
   }, []);
 
-  return formatResult(diffList);
+  return format(diffList);
 };
 
 export default parser;

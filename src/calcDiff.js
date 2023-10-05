@@ -1,35 +1,48 @@
-function markChangeWithNeutral(key, value) {
-  return `    ${key}: ${value}`;
-}
+import _ from 'lodash';
 
-function markChangeWithPlus(key, value) {
-  return `  + ${key}: ${value}`;
-}
-
-function markChangeWithMinus(key, value) {
-  return `  - ${key}: ${value}`;
-}
-
-const calcDiff = (value1, value2, key, result = []) => { // функция получения разницы
-  if (typeof value1 === 'undefined') {
-    // ключ отсутствует в 1 файле
-    result.push(markChangeWithPlus(key, value2));
-  } else if (typeof value2 === 'undefined') {
-    // ключ отсутствует в 2 файле
-    result.push(markChangeWithMinus(key, value1));
-  } else if (typeof value1 === 'object') {
-    // объект. Рекурсия. пока не работает
-    if (typeof value2 === 'object') {
-      return calcDiff(key, result);
+const compareData = (obj1, obj2) => {
+  const keys1 = _.keys(obj1);
+  const keys2 = _.keys(obj2);
+  const sortedKeys = _.sortBy(_.union(keys1, keys2));
+  
+  
+  const result = sortedKeys.map((key) => {
+    if (!_.has(obj1, key)) {
+      return {
+        key,
+        value: obj2[key],
+        type: 'added',
+      }; 
     }
-  } else if (value1 === value2) {
-    // равны значения
-    result.push(markChangeWithNeutral(key, value1));
-  } else {
-    // разнятся значения
-    result.push(markChangeWithMinus(key, value1), markChangeWithPlus(key, value2));
-  }
+    if (!_.has(obj2, key)) {
+      return {
+        key,
+        value: obj1[key],
+        type: 'deleted',
+      };
+    }
+    if(_.isObject(obj1[key]) && _.isObject(obj2[key])){
+      return {
+        key,
+        type: 'nested',
+        children: compareData(obj1[key], obj2[key]),
+      };
+    }
+    if (obj1[key] !== obj2[key]){
+      return {
+        key,
+        valueBefore: obj1[key],
+        valueAfter: obj2[key],
+        type: 'changed',
+      };
+    }
+    return {
+      key,
+      value: obj1[key],
+      type: 'unchanged'
+    };
+  });
   return result;
 };
 
-export default calcDiff;
+export default compareData;
