@@ -5,18 +5,14 @@ import parser from '../src/index.js';
 
 const getPath = (filename) => path.resolve('__fixtures__', filename);
 
-test('json files', () => {
-  const filename1 = getPath('file1.json');
-  const filename2 = getPath('file2.json');
-  const resultname = getPath('result.txt');
-  const result = readFileSync(resultname, 'utf8');
-  expect(parser(filename1, filename2)).toBe(result);
-});
+test('json files', test(`json`));
 
-test('yaml files', () => {
-  const filename1 = getPath('file1.yml');
-  const filename2 = getPath('file2.yml');
+test('yaml files', test(`yml`));
+
+function test(format){
+  const filename1 = getPath(`file1.${format}`);
+  const filename2 = getPath(`file2.${format}`);
   const resultname = getPath('result.txt');
   const result = readFileSync(resultname, 'utf8');
   expect(parser(filename1, filename2)).toBe(result);
-});
+}
