@@ -9,4 +9,7 @@ Step 3: https://asciinema.org/a/586540
 
 Step 5: https://asciinema.org/a/586851
 
-Step 8: https://asciinema.org/a/UzKEe2QXr8f67E9dM1GsQkfGp
+(переделал, случайно добавил временную ссылку)
+Step 8: https://asciinema.org/a/618518
+
+Step 9: https://asciinema.org/a/618517
