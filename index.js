@@ -1,7 +1,7 @@
 import path from 'path';
-import calcDiff from './calcDiff.js';
-import format from './formatters/index.js';
-import parse from './parsers.js'
+import calcDiff from './code/calcDiff.js';
+import format from './code/formatters/index.js';
+import parse from './code/parsers.js'
 import _ from 'lodash';
 import { readFileSync } from 'fs';
 
