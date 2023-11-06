@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander/esm.mjs';
 import process from 'process';
-import calcDiff from '../src/calcDiff.js';
+import calcDiff from '../code/calcDiff.js';
 
 const program = new Command();
 
