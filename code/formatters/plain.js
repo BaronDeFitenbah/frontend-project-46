@@ -15,16 +15,18 @@
         case 'deleted':
           return `Property '${currentPath}' was removed`;
         case 'changed':
-          return `Property '${currentPath}' was updated. From ${formatProperty(currentPath, item.value1)} to ${formatProperty(currentPath, item.value2)}`;
+          return `Property '${currentPath}' was updated. From ${formatProperty(currentPath, item.valueBefore)} to ${formatProperty(currentPath, item.valueAfter)}`;
         case 'nested':
           return generatePlainDiff(item.children, currentPath);
-        case 'unchanged': return null;
+        case 'unchanged': return ;
         default:
           throw new Error(`Unknown item type: '${item.type}'!`);
       }
     });
-  
-    return formattedChanges.join('\n');
+    const result =  formattedChanges.filter((el)=> {
+      return el !== undefined
+    })
+    return result.join('\n');
   };
   
   export default generatePlainDiff;
