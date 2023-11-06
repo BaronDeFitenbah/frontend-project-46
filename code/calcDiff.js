@@ -3,7 +3,6 @@ import path from 'path';
 import fs from 'fs';
 import parse from './parsers.js';
 import ast from './formatters/index.js';
-import getFormatting from './formatters/index.js'
 
 const compare = (obj1, obj2) => {
   const keys1 = _.keys(obj1);
@@ -16,7 +15,7 @@ const compare = (obj1, obj2) => {
         key,
         value: obj2[key],
         type: 'added',
-      }; 
+      };
     }
     if (!_.has(obj2, key)) {
       return {
@@ -25,14 +24,14 @@ const compare = (obj1, obj2) => {
         type: 'deleted',
       };
     }
-    if(_.isObject(obj1[key]) && _.isObject(obj2[key])){
+    if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
       return {
         key,
         type: 'nested',
         children: compare(obj1[key], obj2[key]),
       };
     }
-    if (obj1[key] !== obj2[key]){
+    if (obj1[key] !== obj2[key]) {
       return {
         key,
         valueBefore: obj1[key],
@@ -43,11 +42,11 @@ const compare = (obj1, obj2) => {
     return {
       key,
       value: obj1[key],
-      type: 'unchanged'
+      type: 'unchanged',
     };
   });
   return result;
-}
+};
 
 const getData = (filePath) => {
   const fileContent = fs.readFileSync(filePath, 'utf-8').trim();
