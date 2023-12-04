@@ -17,4 +17,4 @@ const genDiff = (file1, file2, formatName = 'stylish') => {
   
 const getDiff = (file1, file2, format = 'stylish') => ast(compare(getData(file1), getData(file2)), format);
 
-export default getDiff;
+export default genDiff;
