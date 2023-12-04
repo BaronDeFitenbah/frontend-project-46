@@ -1,5 +1,6 @@
 import path from 'path';
 import compare from './calcDiff.js';
+import ast from './formatters/index.js';
 
 const getPath = (filename) => path.resolve('__fixtures__', filename);
 
