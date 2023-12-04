@@ -1,8 +1,8 @@
 import path from 'path';
-import compare from './calcDiff.js';
-import ast from './formatters/index.js';
+import compare from './code/calcDiff.js';
+import ast from './code/formatters/index.js';
 import fs from 'fs';
-import parse from './parsers.js';
+import parse from './code/parsers.js';
 
 const getPath = (filename) => path.resolve('__fixtures__', filename);
 
