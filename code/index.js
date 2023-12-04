@@ -10,6 +10,7 @@ const genDiff = (file1, file2, formatName = 'stylish') => {
   const data1 = getPath(file1);
   const data2 = getPath(file2);
   const data = getDiff(data1, data2, formatName);
+  return data
 };
 
   const getData = (filePath) => {
