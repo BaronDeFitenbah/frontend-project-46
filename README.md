@@ -5,11 +5,17 @@
 
 <a href="https://codeclimate.com/github/BaronDeFitenbah/frontend-project-46/test_coverage"><img src="https://api.codeclimate.com/v1/badges/24eb91d97ccb5bb1e89b/test_coverage" /></a>
 
+Step 1: https://asciinema.org/a/625472
+
+Step 2: https://asciinema.org/a/625472
+
 Step 3: https://asciinema.org/a/586540
 
-Step 5: https://asciinema.org/a/586851
+Step 4: https://asciinema.org/a/625474
 
-(переделал, случайно добавил временную ссылку)
+Step 6: https://asciinema.org/a/586851
+
+Step 7: https://asciinema.org/a/625479
 
 Step 8: https://asciinema.org/a/618518
 
