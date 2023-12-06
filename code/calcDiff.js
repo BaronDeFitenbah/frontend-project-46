@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import path from 'path';
+import fs from 'fs';
 import parse from './parsers.js';
+import ast from './formatters/index.js';
 
 const compare = (obj1, obj2) => {
   const keys1 = _.keys(obj1);
@@ -46,4 +48,12 @@ const compare = (obj1, obj2) => {
   return result;
 };
 
-export default compare;
+const getData = (filePath) => {
+  const fileContent = fs.readFileSync(filePath, 'utf-8').trim();
+  const fileExtName = path.extname(filePath).slice(1);
+  return parse(fileContent, fileExtName);
+};
+
+const getDiff = (file1, file2, format = 'stylish') => ast(compare(getData(file1), getData(file2)), format);
+
+export default getDiff;
