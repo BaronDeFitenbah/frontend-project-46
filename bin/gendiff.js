@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander/esm.mjs';
 import process from 'process';
-import calcDiff from '../code/calcDiff.js';
+import genDiff from '../code/index.js';
 
 const program = new Command();
 
@@ -13,7 +13,7 @@ program
   .argument('<filepath2>')
   .option('-f, --format <type>', 'output format', 'stylish')
   .action((filepath1, filepath2, options) => {
-    console.log(calcDiff(filepath1, filepath2, options.format));
+    console.log(genDiff(filepath1, filepath2, options.format));
   });
 
 program.parse(process.argv);

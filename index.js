@@ -1,14 +1,5 @@
-import path from 'path';
-import calcDiff from './code/calcDiff.js';
-
-const getPath = (filename) => path.resolve('__fixtures__', filename);
-
-const genDiff = (file1, file2, formatName = 'stylish') => {
-  const data1 = getPath(file1);
-  const data2 = getPath(file2);
-  const data = calcDiff(data1, data2, formatName);
-
-  return data;
-};
+import genDiff from './code/index.js';
 
 export default genDiff;
+// Оставил такую схему, так как иначе валится на первом тесте.
+// Cannot find module '/project/code/index.js' from '__tests__/10-prepare.test.js'
