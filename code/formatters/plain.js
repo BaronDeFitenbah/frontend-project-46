@@ -18,12 +18,12 @@ const generatePlainDiff = (dataDiff, path = '') => {
         return `Property '${currentPath}' was updated. From ${formatProperty(currentPath, item.valueBefore)} to ${formatProperty(currentPath, item.valueAfter)}`;
       case 'nested':
         return generatePlainDiff(item.children, currentPath);
-      case 'unchanged': return undefined;
+      case 'unchanged': return null;
       default:
         throw new Error(`Unknown item type: '${item.type}'!`);
     }
   });
-  const result = formattedChanges.filter((el) => el !== undefined);
+  const result = formattedChanges.filter((el) => el !== null);
   return result.join('\n');
 };
 
